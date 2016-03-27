@@ -284,8 +284,13 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 
 	public T next() {
 	    rm = true;
-	    _curr = _curr.getNext();
-	    return _curr.getCargo();
+	    if (hasNext()){
+		_curr = _curr.getNext();
+		return _curr.getCargo();
+	    }
+	    else {
+		throw new NoSuchElementException();
+	    }
 	}
 
 	//removes last element returned by .next()
