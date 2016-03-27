@@ -141,7 +141,8 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 
     //return an Iterator over the elements in list
     public Iterator<T> iterator(){
-	
+	MyIterator ret = new MyIterator();
+        return ret;
     }
     
     //--------------^  List interface methods  ^--------------
@@ -273,13 +274,18 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 	}
 
 	public boolean hasNext() {
-	    
+	    if ( _curr.getNext() != null ) {
+		return true;
+	    }   
+            else {
+		return false;
+            }
 	}
 
 	public T next() {
 	    rm = true;
 	    _curr = _curr.getNext();
-	    return _curr;
+	    return _curr.getCargo();
 	}
 
 	//removes last element returned by .next()
