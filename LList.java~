@@ -20,14 +20,14 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
     //--------------v  List interface methods  v--------------
 
     //insert a node in front of first node
-    public boolean add( T newVal ) { 
+    public boolean add( String newVal ) { 
 	addLast( newVal );
 	return true; //per Java API spec
     } 
 
 
     //insert a node containing newVal at position index
-    public void add( int index, T newVal ) {
+    public void add( int index, String newVal ) {
 
 	if ( index < 0 || index > size() )
 	    throw new IndexOutOfBoundsException();
@@ -64,7 +64,7 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 
 
     //remove node at pos index, return its cargo
-    public T remove( int index ) {
+    public String remove( int index ) {
 
 	if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
@@ -82,7 +82,7 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 		System.out.println( "tmp1: " + tmp1.getCargo() );
 	    }
 	    //check target node's cargo hold
-	    T retVal = tmp1.getNext().getCargo();
+	    String retVal = tmp1.getNext().getCargo();
 
 	    //remove target node
 	    tmp1.setNext( tmp1.getNext().getNext() );
@@ -96,12 +96,12 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
     }
 
 
-    public T get( int index ) { 
+    public String get( int index ) { 
 
 	if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
 
-	T retVal;
+	String retVal;
 	DLLNode<T> tmp = _head; //create alias to head
 
 	//walk to desired node
@@ -114,7 +114,7 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
     } 
 
 
-    public T set( int index, T newVal ) { 
+    public String set( int index, String newVal ) { 
 
 	if ( index < 0 || index >= size() )
 	    throw new IndexOutOfBoundsException();
@@ -126,7 +126,7 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 	    tmp = tmp.getNext();
 
 	//store target node's cargo
-	T oldVal = tmp.getCargo();
+	String oldVal = tmp.getCargo();
 	
 	//modify target node's cargo
 	tmp.setCargo( newVal );
@@ -149,7 +149,7 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 
     //--------------v  Helper methods  v--------------
 
-    public void addFirst( T newFirstVal ) { 
+    public void addFirst( String newFirstVal ) { 
 	//insert new node before first node (prev=null, next=_head)
 	_head = new DLLNode<T>( newFirstVal, null, _head );
 
@@ -160,7 +160,7 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 	_size++;
     }
 
-    public void addLast( T newLastVal ) { 
+    public void addLast( String newLastVal ) { 
 	//insert new node before first node (prev=_last, next=null)
 	_tail = new DLLNode<T>( newLastVal, _tail, null );
 
@@ -171,12 +171,12 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 	_size++;
     }
 
-    public T getFirst() { return _head.getCargo(); }
+    public String getFirst() { return _head.getCargo(); }
 
-    public T getLast() { return _tail.getCargo(); }
+    public String getLast() { return _tail.getCargo(); }
 
-    public T removeFirst() { 
-	T retVal = getFirst();
+    public String removeFirst() { 
+	String retVal = getFirst();
 	if ( size() == 1 ) {
 	    _head = _tail = null;
 	}
@@ -188,8 +188,8 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 	return retVal;
     }
 
-    public T removeLast() { 
-	T retVal = getLast();
+    public String removeLast() { 
+	String retVal = getLast();
 	if ( size() == 1 ) {
 	    _head = _tail = null;
 	}
