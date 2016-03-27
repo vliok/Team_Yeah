@@ -265,20 +265,36 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
     public class MyIterator implements Iterator<T> {
 
 	private DLLNode<T> _curr;
+	private boolean rm;
 
 	public MyIterator() {
 	    _curr = _head;
+	    rm = false;
 	}
 
 	public boolean hasNext() {
 	    
 	}
 
-	public T next() { }
+	public T next() {
+	    rm = true;
+	    _curr = _curr.getNext();
+	    return _curr;
+	}
 
+	//removes last element returned by .next()
 	public void remove() {
 	    //next() call must precede each remove() call
 	    //next(),rm(),rm() must throw exception
+	    if (rm) {
+		_curr.getPrev().setNext(_curr.getNext());
+		_curr.getNext().setPrev(_curr.getPrec());
+		_curr = _curr.getPrev();
+	    }
+	    else {
+		throw new IllegalStateException();
+	    }
+	    rm = false;
 	}
     }
 
