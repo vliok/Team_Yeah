@@ -294,7 +294,7 @@ public class LList<T> implements List<T> { //your List.java must be in same dir
 	    //next(),rm(),rm() must throw exception
 	    if (rm) {
 		_curr.getPrev().setNext(_curr.getNext());
-		_curr.getNext().setPrev(_curr.getPrec());
+		_curr.getNext().setPrev(_curr.getPrev());
 		_curr = _curr.getPrev();
 	    }
 	    else {
